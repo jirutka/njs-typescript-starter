@@ -1,0 +1,54 @@
+{
+  "name": "njs-typescript-starter",
+  "version": "0.0.0",
+  "description": "A starting template for NGINX njs scripts written in TypeScript",
+  "author": "Jakub Jirutka <jakub@jirutka.cz>",
+  "license": "MIT",
+  "homepage": "https://github.com/jirutka/njs-typescript-starter",
+  "bugs": "https://github.com/jirutka/njs-typescript-starter/issues/",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jirutka/njs-typescript-starter.git"
+  },
+  "main": "dist/main.js",
+  "files": [
+    "dist",
+    "src"
+  ],
+  "scripts": {
+    "build": "rollup -c --environment NODE_ENV:production",
+    "clean": "rimraf dist/* node_modules/.cache/*",
+    "lint": "tsc",
+    "prepublishOnly": "run-s build && asciidoctor -b docbook -a npm-readme -a gh-branch=v$npm_package_version -o - README.adoc | pandoc -f docbook -t gfm --base-header-level 2 -o README.md",
+    "start": "run-p watch start-nginx",
+    "start-nginx": "start-nginx --version 1.19.x --port 8090 --watch dist/ integration-tests/nginx.conf",
+    "test": "rollup -c && mocha",
+    "watch": "rollup -c --watch --no-watch.clearScreen"
+  },
+  "engines": {
+    "node": ">= 14.15"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.12.13",
+    "@babel/plugin-transform-modules-commonjs": "^7.12.13",
+    "@babel/preset-typescript": "^7.12.13",
+    "@babel/register": "^7.12.13",
+    "@rollup/plugin-babel": "^5.2.3",
+    "@rollup/plugin-commonjs": "^17.1.0",
+    "@rollup/plugin-node-resolve": "^11.1.1",
+    "@types/babel__core": "^7.1.12",
+    "@types/mocha": "^8.2.0",
+    "@types/rollup-plugin-add-git-msg": "^1.1.0",
+    "babel-preset-njs": "^0.2.0",
+    "babel-register-ts": "^7.0.0",
+    "got": "^11.8.1",
+    "mocha": "^8.2.1",
+    "nginx-testing": "^0.2.1",
+    "njs-types": "~0.5.1",
+    "npm-run-all": "^4.1.5",
+    "rimraf": "^3.0.2",
+    "rollup": "^2.38.5",
+    "rollup-plugin-add-git-msg": "^1.1.0",
+    "typescript": "~4.1.5"
+  }
+}

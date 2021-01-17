@@ -1,0 +1,22 @@
+name: CI
+on:
+  - push
+
+jobs:
+  test:
+    name: Test with nginx ${{ matrix.nginx-version }}
+    strategy:
+      matrix:
+        nginx-version:
+          - 1.18.x
+          - 1.19.x
+    env:
+      NGINX_VERSION: ${{ matrix.nginx-version }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v2
+      - run: yarn install
+      - run: yarn build
+      - run: yarn test
+      - run: yarn lint
