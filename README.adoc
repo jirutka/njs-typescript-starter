@@ -6,6 +6,7 @@
 :nb-: &#8209;
 // links
 :Babel: link:https://babeljs.io[Babel]
+:ESLint: link:https://eslint.org[ESLint]
 :Mocha: link:https://mochajs.org[Mocha]
 :nginx-testing: link:https://github.com/jirutka/nginx-testing[nginx-testing]
 :power-assert: link:https://github.com/power-assert-js/power-assert[power-assert]
@@ -104,6 +105,9 @@ Files and directory structure of the project.
 | Defines very basic code style used in the project.
 See https://editorconfig.org[editorconfig.org] for more information.
 
+| link:.eslintrc.js[]
+| {ESLint} config for linting your TypeScript and JavaScript files.
+
 | link:.mocharc.js[]
 | {Mocha} config for integration tests.
 
@@ -146,7 +150,9 @@ Below is a list of all the scripts this template has available:
 
 | build           | Compiles and bundles all source `.ts` files together with their dependencies into a single `.js` file in the `dist` directory.
 | clean           | Cleans `dist` and `node_modules/.cache` directories.
-| lint            | Runs TypeScript type checker on project files.
+| lint            | Runs both `lint:eslint` and `lint:types` in parallel.
+| lint:eslint     | Runs {ESLint} linter on project files.
+| lint:types      | Runs TypeScript type checker on project files.
 | start           | Runs `start-nginx` and `watch` in parallel.
 | start{nb-}nginx | Starts nginx 1.19.x on port 8090 with config `integration-tests/nginx.conf` and reloads it on each change of the config file and files in `dist/`.
 | test            | Runs all tests in the `integration-tests` directory using {Mocha} test runner.
@@ -188,6 +194,10 @@ The following is a list of `devDependencies` with their description.
 * {npmjs-pkg}/nginx-testing[nginx-testing] -- Support for integration/acceptance testing of nginx configuration.
 
 * {npmjs-pkg}/got[got] -- A human-friendly and powerful HTTP request library for Node.js. Used in integration tests.
+
+* {npmjs-pkg}/eslint[eslint] -- {ESLint} is a tool for identifying and reporting on patterns found in JavaScript and TypeScript code.
+** {npmjs-pkg}/@typescript-eslint/eslint-plugin[@typescript-eslint/eslint-plugin] -- A TypeScript plugin for {ESlint}.
+** {npmjs-pkg}/@typescript-eslint/parser[@typescript-eslint/parser] -- An {ESLint} parser which leverages TypeScript ESTree to allow for ESLint to lint TypeScript source code.
 
 * {npmjs-pkg}/npm-run-all[npm-run-all] -- A CLI tool to run multiple npm-scripts in parallel or sequential. Used in npm scripts.
 
