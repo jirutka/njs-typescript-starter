@@ -1,5 +1,7 @@
 'use strict'
 
+process.env.BABEL_ENV = 'mocha'
+
 module.exports = {
   checkLeaks: true,
   extension: ['ts'],

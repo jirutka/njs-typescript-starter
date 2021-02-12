@@ -24,5 +24,10 @@ module.exports = (api) => ({
       // This is not used with Rollup.
       '@babel/plugin-transform-modules-commonjs'
     ] : [],
+    ...api.env('mocha') ? [
+      // Transform power-assert. This is used only for Mocha tests.
+      'babel-plugin-empower-assert',
+      'babel-plugin-espower',
+    ] : [],
   ],
 })

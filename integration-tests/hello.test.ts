@@ -16,6 +16,6 @@ before(function () {
 test('/hello?name=njs', async () => {
   const resp = await client.get('hello?name=njs')
 
-  assert.equal(resp.statusCode, 200, 'Expected to return status 200.')
-  assert(resp.body.includes('Meow, njs!'), 'Expected body to include "Meow, njs!"')
+  assert(resp.statusCode === 200)
+  assert(resp.body.includes('Meow, njs!'))
 })
