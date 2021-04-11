@@ -36,7 +36,7 @@
     "@babel/preset-typescript": "^7.12.13",
     "@babel/register": "^7.12.13",
     "@rollup/plugin-babel": "^5.2.3",
-    "@rollup/plugin-commonjs": "^17.1.0",
+    "@rollup/plugin-commonjs": "^18.0.0",
     "@rollup/plugin-node-resolve": "^11.1.1",
     "@types/babel__core": "^7.1.12",
     "@types/mocha": "^8.2.0",
@@ -50,13 +50,13 @@
     "eslint": "^7.19.0",
     "got": "^11.8.1",
     "mocha": "^8.2.1",
-    "nginx-testing": "^0.2.1",
-    "njs-types": "~0.5.1",
+    "nginx-testing": "^0.3.0",
+    "njs-types": "~0.5.3",
     "npm-run-all": "^4.1.5",
     "power-assert": "^1.6.1",
     "rimraf": "^3.0.2",
     "rollup": "^2.38.5",
     "rollup-plugin-add-git-msg": "^1.1.0",
-    "typescript": "~4.1.5"
+    "typescript": "~4.2.4"
   }
 }
