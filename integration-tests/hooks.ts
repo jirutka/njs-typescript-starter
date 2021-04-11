@@ -1,4 +1,5 @@
 import { Context, RootHookObject } from 'mocha'
+import { beforeEachSuite } from 'mocha-suite-hooks'
 import { startNginx, NginxServer } from 'nginx-testing'
 
 
@@ -22,6 +23,13 @@ export const mochaHooks: RootHookObject = {
     if (errors) {
       console.error(errors.join('\n'))
     }
+
+    beforeEachSuite (async function () {
+      // Read the logs to consume (discard) them before running next test suite
+      // (describe block).
+      await this.nginx.readErrorLog()
+      await this.nginx.readAccessLog()
+    })
   },
 
   async afterAll (this: Context) {
@@ -33,12 +41,10 @@ export const mochaHooks: RootHookObject = {
   async afterEach (this: Context) {
     const { currentTest, nginx } = this
 
-    // If the test passed, still read the logs to consume (discard) them before
-    // running next test.
-    const errorLog = await nginx.readErrorLog()
-    const accessLog = await nginx.readAccessLog()
-
     if (currentTest?.state === 'failed' && currentTest.err) {
+      const errorLog = await nginx.readErrorLog()
+      const accessLog = await nginx.readAccessLog()
+
       const logs = [
         errorLog && '----- Error Log -----\n' + errorLog,
         accessLog && '----- Access Log -----\n' + accessLog,
