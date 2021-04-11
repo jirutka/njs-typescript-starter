@@ -1,9 +1,13 @@
+import * as FS from 'fs'
 import got, { Got } from 'got'
 import { Context, RootHookObject } from 'mocha'
 import { beforeEachSuite } from 'mocha-suite-hooks'
 import { startNginx, NginxServer } from 'nginx-testing'
 
 
+const certificate = FS.readFileSync(`${__dirname}/fixtures/server.crt`)
+const host = '127.0.0.1'
+const nginxConfig = `${__dirname}/nginx.conf`
 const nginxVersion = process.env.NGINX_VERSION || '1.19.x'
 
 declare module 'mocha' {
@@ -17,7 +21,7 @@ export const mochaHooks: RootHookObject = {
   async beforeAll (this: Context) {
     this.timeout(30_000)
 
-    this.nginx = await startNginx({ version: nginxVersion, configPath: `${__dirname}/nginx.conf` })
+    this.nginx = await startNginx({ version: nginxVersion, bindAddress: host, configPath: nginxConfig })
 
     const errors = (await this.nginx.readErrorLog())
       .split('\n')
@@ -27,7 +31,10 @@ export const mochaHooks: RootHookObject = {
     }
 
     this.client = got.extend({
-      prefixUrl: `http://127.0.0.1:${this.nginx.port}`,
+      https: {
+        certificateAuthority: certificate,
+      },
+      prefixUrl: `https://${host}:${this.nginx.port}`,
       retry: 0,
       throwHttpErrors: false,
     })
