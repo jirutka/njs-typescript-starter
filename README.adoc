@@ -186,6 +186,7 @@ The following is a list of `devDependencies` with their description.
 ** {npmjs-pkg}/rollup-plugin-add-git-msg[rollup-plugin-add-git-msg] -- A {Rollup} plugin that inserts git tag, commit hash, build date and copyright at top of the generated JS bundle.
 
 * {npmjs-pkg}/mocha[mocha] -- A flexible JavaScript test framework for Node.js.
+** {npmjs-pkg}/mocha-suite-hooks[mocha-suite-hooks] -- Suite-level hooks for {Mocha}; allows to run hook before/after describe block.
 
 * {npmjs-pkg}/power-assert[power-assert] -- “Power Assert” in JavaScript. Provides descriptive assertion messages through standard assert interface.
 ** {npmjs-pkg}/babel-plugin-empower-assert[babel-plugin-empower-assert] -- A {Babel} plugin to convert https://nodejs.org/api/assert.html[assert] to {power-assert} at compile time.
