@@ -28,6 +28,7 @@ export const mochaHooks: RootHookObject = {
 
     this.client = got.extend({
       prefixUrl: `http://127.0.0.1:${this.nginx.port}`,
+      retry: 0,
       throwHttpErrors: false,
     })
 
