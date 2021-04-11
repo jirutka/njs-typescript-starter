@@ -1,3 +1,4 @@
+import got, { Got } from 'got'
 import { Context, RootHookObject } from 'mocha'
 import { beforeEachSuite } from 'mocha-suite-hooks'
 import { startNginx, NginxServer } from 'nginx-testing'
@@ -7,6 +8,7 @@ const nginxVersion = process.env.NGINX_VERSION || '1.19.x'
 
 declare module 'mocha' {
   export interface Context {
+    client: Got
     nginx: NginxServer
   }
 }
@@ -23,6 +25,11 @@ export const mochaHooks: RootHookObject = {
     if (errors) {
       console.error(errors.join('\n'))
     }
+
+    this.client = got.extend({
+      prefixUrl: `http://127.0.0.1:${this.nginx.port}`,
+      throwHttpErrors: false,
+    })
 
     beforeEachSuite (async function () {
       // Read the logs to consume (discard) them before running next test suite
