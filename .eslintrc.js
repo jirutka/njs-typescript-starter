@@ -7,6 +7,7 @@ module.exports = {
   ignorePatterns: [
     '**/node_modules/',
     '/dist/',
+    '/lib/',
   ],
   env: {
     es6: true,
@@ -26,7 +27,10 @@ module.exports = {
       files: '*.ts',
       parser: '@typescript-eslint/parser',
       parserOptions: {
-        project: 'tsconfig.json',
+        project: [
+          './tsconfig.json',
+          './src/tsconfig.json',
+        ],
       },
       extends: [
         'eslint:recommended',
