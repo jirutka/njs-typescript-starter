@@ -12,6 +12,20 @@ const njsExternals = ['crypto', 'fs', 'querystring']
 const isEnvProd = process.env.NODE_ENV === 'production'
 
 /**
+ * Plugin to fix syntax of the default export to be compatible with njs.
+ * (https://github.com/rollup/rollup/pull/4182#issuecomment-1002241017)
+ *
+ * @return {import('rollup').OutputPlugin}
+ */
+const fixExportDefault = () => ({
+  name: 'fix-export-default',
+  renderChunk: (code) => ({
+    code: code.replace(/\bexport { (\S+) as default };/, 'export default $1;'),
+    map: null,
+  }),
+})
+
+/**
  * @type {import('rollup').RollupOptions}
  */
 const options = {
@@ -30,6 +44,8 @@ const options = {
     }),
     // Convert CommonJS modules to ES6 modules.
     commonjs(),
+    // Fix syntax of the default export.
+    fixExportDefault(),
     // Plugins to use in production mode only.
     ...isEnvProd ? [
       // Add git tag, commit SHA, build date and copyright at top of the file.
