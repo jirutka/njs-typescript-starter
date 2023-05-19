@@ -1,7 +1,7 @@
 'use strict'
 // @ts-check
 
-/** @type {import('eslint').Linter.Config} */
+/** @type {import('eslint/lib/shared/types').ConfigData} */
 module.exports = {
   root: true,
   ignorePatterns: [
