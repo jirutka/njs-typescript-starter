@@ -8,12 +8,17 @@ import { nodeResolve } from '@rollup/plugin-node-resolve'
 
 
 // List of njs built-in modules.
-const njsExternals = ['crypto', 'fs', 'querystring']
+//
+// - xml has added in njs 0.7.11
+// - zlib was added in njs 0.7.12
+const njsExternals = ['crypto', 'fs', 'querystring', 'xml', 'zlib']
 const isEnvProd = process.env.NODE_ENV === 'production'
 
 /**
  * Plugin to fix syntax of the default export to be compatible with njs.
  * (https://github.com/rollup/rollup/pull/4182#issuecomment-1002241017)
+ *
+ * If you use njs >=0.7.12, you can remove this.
  *
  * @return {import('rollup').OutputPlugin}
  */
