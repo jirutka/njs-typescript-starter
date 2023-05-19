@@ -170,7 +170,7 @@ Below is a list of all the scripts this template has available:
 :npmjs-pkg: https://www.npmjs.com/package/
 
 Project’s dependencies are specified in file link:package.json[], sections `dependencies` (runtime dependencies) and `devDependencies` (build-time dependencies).
-They are managed by {npm} or {yarn} (recommended).
+They are managed by {npm} or {yarn}.
 
 The following is a list of `devDependencies` with their description.
 
