@@ -200,7 +200,7 @@ The following is a list of `devDependencies` with their description.
 
 * {npmjs-pkg}/nginx-testing[nginx-testing] -- Support for integration/acceptance testing of nginx configuration.
 
-* {npmjs-pkg}/got[got] -- A human-friendly and powerful HTTP request library for Node.js. Used in integration tests.
+* {npmjs-pkg}/got[got] -- A human-friendly and powerful HTTP request library for Node.js. Used in integration tests. Do _not_ update it to version 12.x (see https://github.com/{gh-name}/issues/3[#3])!
 
 * {npmjs-pkg}/eslint[eslint] -- {ESLint} is a tool for identifying and reporting on patterns found in JavaScript and TypeScript code.
 ** {npmjs-pkg}/@typescript-eslint/eslint-plugin[@typescript-eslint/eslint-plugin] -- A TypeScript plugin for {ESlint}.
