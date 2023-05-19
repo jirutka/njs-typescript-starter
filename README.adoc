@@ -29,7 +29,7 @@ toc::[]
 
 To build and run this project locally you will need:
 
-* Linux system footnote:[It should work on any recent Linux distribution for x86_64, aarch64, armv7 or ppc64le architecture.], macOS footnote:[I’m not sure what is the lowest version you need. It should work both on Intel and M1.], or Windows 10+ (x64)
+* Linux system footnote:[It should work on any recent Linux distribution for x86_64, aarch64, or ppc64le architecture.], macOS footnote:[I’m not sure what is the lowest version you need. It should work both on Intel and M1.], or Windows 10+ (x64)
 * https://nodejs.org/en/download/package-manager/[Node.js] 18.12 or newer
 * {npm} (distributed with Node.js) or {yarn}
 
