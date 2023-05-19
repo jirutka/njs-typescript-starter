@@ -58,6 +58,6 @@
     "rimraf": "^3.0.2",
     "rollup": "^2.38.5",
     "rollup-plugin-add-git-msg": "^1.1.0",
-    "typescript": "~4.2.4"
+    "typescript": "~5.0.4"
   }
 }
