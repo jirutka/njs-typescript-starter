@@ -8,7 +8,7 @@ import { startNginx, NginxServer } from 'nginx-testing'
 const certificate = FS.readFileSync(`${__dirname}/fixtures/server.crt`)
 const host = '127.0.0.1'
 const nginxConfig = `${__dirname}/nginx.conf`
-const nginxVersion = process.env.NGINX_VERSION || '1.19.x'
+const nginxVersion = process.env.NGINX_VERSION || '1.24.x'
 
 declare module 'mocha' {
   export interface Context {

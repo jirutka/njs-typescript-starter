@@ -160,7 +160,7 @@ Below is a list of all the scripts this template has available:
 | lint:eslint     | Runs {ESLint} linter on project files.
 | lint:types      | Runs TypeScript type checker on project files.
 | start           | Runs `start-nginx` and `watch` in parallel.
-| start{nb-}nginx | Starts nginx 1.19.x on port 8090 with config `integration-tests/nginx.conf` and reloads it on each change of the config file and files in `dist/`.
+| start{nb-}nginx | Starts nginx 1.24.x on port 8090 with config `integration-tests/nginx.conf` and reloads it on each change of the config file and files in `dist/`.
 | test            | Runs all tests in the `integration-tests` directory using {Mocha} test runner.
 | watch           | Same as `build` but continuously watches project’s `.ts` files and re-compiles when needed.
 |===
