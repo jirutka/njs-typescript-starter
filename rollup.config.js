@@ -47,6 +47,7 @@ const options = {
     // Fix syntax of the default export.
     fixExportDefault(),
     // Plugins to use in production mode only.
+    // @ts-ignore TODO: remove after updating dependencies
     ...isEnvProd ? [
       // Add git tag, commit SHA, build date and copyright at top of the file.
       addGitMsg(),
