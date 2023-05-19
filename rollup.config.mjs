@@ -1,10 +1,10 @@
 // @ts-check
-import addGitMsg from 'rollup-plugin-add-git-msg'
-import babel from '@rollup/plugin-babel'
-import commonjs from '@rollup/plugin-commonjs'
-import resolve from '@rollup/plugin-node-resolve'
+import * as FS from 'node:fs'
 
-import pkg from './package.json'
+import addGitMsg from 'rollup-plugin-add-git-msg'
+import { babel } from '@rollup/plugin-babel'
+import commonjs from '@rollup/plugin-commonjs'
+import { nodeResolve } from '@rollup/plugin-node-resolve'
 
 
 // List of njs built-in modules.
@@ -26,6 +26,11 @@ const fixExportDefault = () => ({
 })
 
 /**
+ * @type {import('./package.json')}
+ */
+const pkg = JSON.parse(FS.readFileSync('./package.json', 'utf8'))
+
+/**
  * @type {import('rollup').RollupOptions}
  */
 const options = {
@@ -39,15 +44,15 @@ const options = {
       extensions: ['.ts', '.mjs', '.js'],
     }),
     // Resolve node modules.
-    resolve({
+    nodeResolve({
       extensions: ['.mjs', '.js', '.json', '.ts'],
     }),
     // Convert CommonJS modules to ES6 modules.
+    // @ts-ignore XXX: workaround for https://github.com/rollup/plugins/issues/1329
     commonjs(),
     // Fix syntax of the default export.
     fixExportDefault(),
     // Plugins to use in production mode only.
-    // @ts-ignore TODO: remove after updating dependencies
     ...isEnvProd ? [
       // Add git tag, commit SHA, build date and copyright at top of the file.
       addGitMsg(),
