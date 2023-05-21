@@ -203,8 +203,6 @@ The following is a list of `devDependencies` with their description.
 
 * {npmjs-pkg}/npm-run-all[npm-run-all] -- A CLI tool to run multiple npm-scripts in parallel or sequential. Used in npm scripts.
 
-* {npmjs-pkg}/rimraf[rimraf] -- A deep deletion module for node (like `rm -rf`). Used in npm scripts.
-
 
 == License
 
