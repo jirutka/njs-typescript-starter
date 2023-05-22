@@ -206,4 +206,4 @@ The following is a list of `devDependencies` with their description.
 
 == License
 
-This project is licensed under http://opensource.org/licenses/MIT/[MIT License].
+This project is licensed under https://opensource.org/license/mit/[MIT License].
